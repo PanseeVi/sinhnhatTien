@@ -1,0 +1,296 @@
+@charset "UTF-8";
+body {
+  background-color: pink;
+}
+body .flower {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-image: url("assets/flower.png"); /* ảnh hoa PNG hoặc GIF */
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  animation: bloom 2s ease-out forwards;
+  z-index: 9999;
+}
+body .welcome-door {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  z-index: 9999;
+  pointer-events: none;
+}
+body .door {
+  flex: 1;
+  background-color: #faabe2;
+  background-size: cover;
+  background-position: center;
+  transition: transform 1.6s ease-in-out;
+}
+body .left-door {
+  transform-origin: left;
+  background-image: url("assets/anhdao.png");
+}
+body .right-door {
+  transform-origin: right;
+  background-image: url("assets/anhdao_r.png");
+}
+body .welcome-door.open .left-door {
+  transform: translateX(-100%);
+}
+body .welcome-door.open .right-door {
+  transform: translateX(100%);
+}
+@keyframes bloom {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5) rotate(360deg);
+    opacity: 0;
+  }
+}
+body .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+}
+body .container .bbay {
+  position: absolute;
+  height: 200px;
+  top: 35%;
+  left: 40%;
+  transform: translateX(-50%);
+  z-index: 1;
+  transition: all 3s ease;
+}
+@media (max-width: 576px) {
+  body .container .bbay {
+    transition: all 5s ease;
+    top: 45%;
+    left: 40%;
+    width: 60px;
+    height: 60px;
+  }
+}
+body .container .bbay.move-top {
+  top: -30%;
+}
+body .container .head {
+  width: 90%;
+  height: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body .container .head .cake {
+  width: 200px;
+  height: 200px;
+  transform: rotate(-30deg);
+  transition: transform 0.3s ease;
+}
+body .container .head .cake:hover {
+  transform: rotate(0deg);
+}
+body .container .head .titlehead {
+  width: 600px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+@media (max-width: 576px) {
+  body .container .head .titlehead {
+    position: absolute;
+    bottom: 60%;
+    left: 26%;
+    width: 200px;
+    height: 60px;
+  }
+}
+body .container .head .salt {
+  width: 200px;
+  height: 200px;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+body .container .head .salt:hover {
+  transform: rotate(30deg);
+}
+@media (max-width: 576px) {
+  body .container .head .cake {
+    width: 120px;
+    height: 120px;
+  }
+  body .container .head .salt {
+    width: 120px;
+    height: 120px;
+  }
+}
+body .container .card_container {
+  width: 100%;
+  height: 30%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+body .container .card_container .card {
+  position: relative;
+  width: 311px;
+  height: 213px;
+  background: pink;
+  color: white;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+@media (max-width: 576px) {
+  body .container .card_container .card {
+    margin: 2px;
+    width: 80px;
+    height: 160px;
+  }
+}
+body .container .card_container #card1 {
+  margin-left: 100px;
+}
+@media (max-width: 576px) {
+  body .container .card_container #card1 {
+    margin-left: 0px;
+  }
+}
+body .container .card_container #card4 {
+  margin-right: 100px;
+}
+@media (max-width: 576px) {
+  body .container .card_container #card4 {
+    margin-right: 0px;
+  }
+}
+body .container .card_container .card h1 {
+  z-index: 98;
+  font-size: 48px;
+  color: palevioletred;
+}
+@media (max-width: 576px) {
+  body .container .card_container .card h1 {
+    font-size: 12px;
+  }
+}
+body .container .card_container .pansee {
+  position: absolute;
+  left: 8%;
+  width: 100px;
+  z-index: 1;
+  transition: all 2s ease;
+}
+@media (max-width: 576px) {
+  body .container .card_container .pansee {
+    display: none;
+  }
+}
+body .container .card_container .pansee.move-left {
+  transform: translateX(-100px);
+  width: 160px;
+}
+body .container .card_container .thuytien {
+  position: absolute;
+  bottom: 0;
+  right: 15%;
+  width: 100px;
+  z-index: 2;
+  transition: all 2s ease;
+}
+@media (max-width: 576px) {
+  body .container .card_container .thuytien {
+    display: none;
+  }
+}
+body .container .card_container .thuytien.move-right {
+  transform: translateX(230px);
+  width: 180px;
+}
+body .container .card_container .meow {
+  position: absolute;
+  bottom: 0;
+  left: 65%;
+  width: 100px;
+  z-index: 1;
+  transition: all 4s ease;
+}
+@media (max-width: 576px) {
+  body .container .card_container .meow {
+    display: none;
+  }
+}
+body .container .card_container .cover {
+  position: absolute;
+  inset: 0;
+  background-image: url("assets/welcome_card.jpg");
+  background-size: cover;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  z-index: 99;
+  cursor: pointer;
+  transition: opacity 2s ease;
+}
+@media (max-width: 576px) {
+  body .container .card_container .cover {
+    font-size: 14px;
+    background-image: url("assets/cover.png");
+    background-size: cover;
+  }
+}
+body .container .body {
+  width: 100%;
+  height: 30%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0);
+}
+body .container .body .slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+body .container .body .slider .slide-track {
+  display: flex;
+  width: 2500px;
+  animation: scroll 20s linear infinite;
+}
+body .container .body .slider .tien {
+  width: 260px;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 22px;
+  padding: 0 10px;
+}
+@media (max-width: 576px) {
+  body .container .body .slider .tien {
+    width: 100px;
+    height: 200px;
+  }
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}/*# sourceMappingURL=style.css.map */

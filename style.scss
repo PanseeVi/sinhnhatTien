@@ -1,0 +1,309 @@
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+);
+
+@mixin respond($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint không tồn tại: #{$breakpoint}";
+  }
+}
+
+body {
+  background-color: pink;
+  .flower {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-image: url("assets/flower.png"); /* ảnh hoa PNG hoặc GIF */
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    animation: bloom 2s ease-out forwards;
+    z-index: 9999;
+  }
+  .welcome-door {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  .door {
+    flex: 1;
+    background-color: #faabe2;
+    background-size: cover;
+    background-position: center;
+    transition: transform 1.6s ease-in-out;
+  }
+
+  .left-door {
+    transform-origin: left;
+    background-image: url("assets/anhdao.png");
+  }
+
+  .right-door {
+    transform-origin: right;
+    background-image: url("assets/anhdao_r.png");
+  }
+
+  .welcome-door.open .left-door {
+    transform: translateX(-100%);
+  }
+
+  .welcome-door.open .right-door {
+    transform: translateX(100%);
+  }
+
+  @keyframes bloom {
+    0% {
+      transform: scale(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100vh;
+
+    .bbay {
+      position: absolute;
+      height: 200px;
+      top: 35%;
+      left: 40%;
+      transform: translateX(-50%);
+      z-index: 1;
+      transition: all 3s ease;
+      @include respond(sm) {
+        transition: all 5s ease;
+
+        top: 45%;
+        left: 40%;
+        width: 60px;
+        height: 60px;
+      }
+    }
+    .bbay.move-top {
+      top: -30%;
+    }
+    .head {
+      width: 90%;
+      height: 30%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .cake {
+        width: 200px;
+        height: 200px;
+        transform: rotate(-30deg);
+        transition: transform 0.3s ease;
+        &:hover {
+          transform: rotate(0deg);
+        }
+      }
+      .titlehead {
+        width: 600px;
+        height: 200px;
+        margin-bottom: 20px;
+        @include respond(sm) {
+          position: absolute;
+          bottom: 60%;
+          left: 26%;
+          width: 200px;
+          height: 60px;
+        }
+      }
+      .salt {
+        width: 200px;
+        height: 200px;
+        transform: rotate(0deg);
+        transition: transform 0.3s ease;
+        &:hover {
+          transform: rotate(30deg);
+        }
+      }
+
+      @include respond(sm) {
+        .cake {
+          width: 120px;
+          height: 120px;
+        }
+        .salt {
+          width: 120px;
+          height: 120px;
+        }
+      }
+    }
+    .card_container {
+      width: 100%;
+      height: 30%;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+
+      .card {
+        position: relative;
+        width: 311px;
+        height: 213px;
+        background: pink;
+        color: white;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+        @include respond(sm) {
+          margin: 2px;
+          width: 80px;
+          height: 160px;
+        }
+      }
+      #card1 {
+        margin-left: 100px;
+        @include respond(sm) {
+          margin-left: 0px;
+        }
+      }
+      #card4 {
+        margin-right: 100px;
+        @include respond(sm) {
+          margin-right: 0px;
+        }
+      }
+
+      .card h1 {
+        z-index: 98;
+        font-size: 48px;
+        color: palevioletred;
+        @include respond(sm) {
+          font-size: 12px;
+        }
+      }
+      .pansee {
+        position: absolute;
+        left: 8%;
+        width: 100px;
+        z-index: 1;
+        transition: all 02s ease;
+        @include respond(sm) {
+          display: none;
+        }
+      }
+      .pansee.move-left {
+        transform: translateX(-100px);
+        width: 160px;
+      }
+
+      .thuytien {
+        position: absolute;
+        bottom: 0;
+        right: 15%;
+        width: 100px;
+        z-index: 2;
+        transition: all 02s ease;
+        @include respond(sm) {
+          display: none;
+        }
+      }
+      .thuytien.move-right {
+        transform: translateX(230px);
+        width: 180px;
+      }
+      .meow {
+        position: absolute;
+        bottom: 0;
+        left: 65%;
+        width: 100px;
+        z-index: 1;
+        transition: all 04s ease;
+        @include respond(sm) {
+          display: none;
+        }
+      }
+
+      .cover {
+        position: absolute;
+        inset: 0;
+        background-image: url("assets/welcome_card.jpg");
+        background-size: cover;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 18px;
+        z-index: 99;
+        cursor: pointer;
+        transition: opacity 2s ease;
+        @include respond(sm) {
+          font-size: 14px;
+          background-image: url("assets/cover.png");
+          background-size: cover;
+        }
+      }
+    }
+
+    .body {
+      width: 100%;
+      height: 30%;
+      overflow: hidden;
+      background: #00000000;
+
+      .slider {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+
+        .slide-track {
+          display: flex;
+          width: calc(250px * 10);
+          animation: scroll 20s linear infinite;
+        }
+
+        .tien {
+          width: 260px;
+          height: 300px;
+          object-fit: cover;
+          border-radius: 22px;
+          padding: 0 10px;
+          @include respond(sm) {
+            width: 100px;
+            height: 200px;
+          }
+        }
+      }
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
