@@ -55,3 +55,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 800);
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const audio = document.getElementById("audio");
+
+  const allowPlay = () => {
+    audio.play().catch((e) => {
+      console.log("Autoplay bị chặn:", e);
+    });
+    document.removeEventListener("click", allowPlay);
+  };
+
+  document.addEventListener("click", allowPlay);
+});
